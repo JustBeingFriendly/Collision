@@ -158,7 +158,8 @@ public class AnimationView extends SurfaceView implements Runnable, SurfaceHolde
 			bottomThirdScreen = (height / 3) * 2; //Finds bottom third of screen, use as baseline x position for ground drawing			
 		}
 		
-		shipYPos =  50;
+		shipYPos =  0;
+		shipXPos =(int) width / 2;
 		int gravity = 0;
 		int verticalThrust = 0;
 		
@@ -330,7 +331,7 @@ public class AnimationView extends SurfaceView implements Runnable, SurfaceHolde
 		nextXstartPos = landingPad(mainPath, nextXstartPos);
 		nextXstartPos = SpireFeature(mainPath, nextXstartPos);
 		nextXstartPos = TreeFeature(mainPath, nextXstartPos);*/
-		nextXstartPos = FeatureRandomiser(mainPath, nextXstartPos);
+		nextXstartPos = GroundAssembler(mainPath, nextXstartPos);
 		//Draws from far right, to bottom right, bottom left and back to start, effectively closing the shape
 		mainPath.lineTo(width, bottomThirdScreen);
 		mainPath.lineTo(width, height);
@@ -340,7 +341,7 @@ public class AnimationView extends SurfaceView implements Runnable, SurfaceHolde
 		mapped = true;
 	}
 	
-	private float FeatureRandomiser(Path path, float x){
+	private float GroundAssembler(Path path, float x){
 		Path sharedPath = path;
 		float nextX = x;
 		for(int i : FeatureArray){
@@ -359,8 +360,7 @@ public class AnimationView extends SurfaceView implements Runnable, SurfaceHolde
 				break;
 			}
 		}
-		return nextX;
-		
+		return nextX;		
 	}
 	
 	private void PsuedoRandomSort(){
@@ -368,6 +368,15 @@ public class AnimationView extends SurfaceView implements Runnable, SurfaceHolde
 		
 		boolean ChoosingNumbers = true;
 		boolean zeroAlreadyExists = false;
+		
+		//ArrayList<int> 
+		
+		
+		/*while(!mapped){
+			
+		}*/
+		
+		
 		
 		
 		while(ChoosingNumbers){			
